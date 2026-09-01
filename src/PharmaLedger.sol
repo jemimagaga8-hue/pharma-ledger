@@ -8,7 +8,6 @@ import "@openzeppelin/contracts/access/Ownable.sol";
  * @dev A decentralized vault for anchoring clinical trial data hashes to the blockchain.
  */
 contract PharmaLedger is Ownable {
-    
     // ==========================================
     // DATA STRUCTURES
     // ==========================================
@@ -28,11 +27,7 @@ contract PharmaLedger is Ownable {
     // EVENTS
     // ==========================================
     event TrialUploaded(
-        uint256 indexed trialId,
-        address indexed researcher,
-        string studyTitle,
-        string ipfsHash,
-        uint256 timestamp
+        uint256 indexed trialId, address indexed researcher, string studyTitle, string ipfsHash, uint256 timestamp
     );
 
     event ResearcherAuthorized(address researcher);
@@ -77,9 +72,11 @@ contract PharmaLedger is Ownable {
         emit TrialUploaded(trialCount, msg.sender, _studyTitle, _ipfsHash, block.timestamp);
     }
 
-    function getTrialData(uint256 _trialId) public view returns (
-        uint256, address, string memory, string memory, uint256
-    ) {
+    function getTrialData(uint256 _trialId)
+        public
+        view
+        returns (uint256, address, string memory, string memory, uint256)
+    {
         require(_trialId > 0 && _trialId <= trialCount, "Trial does not exist");
         ClinicalTrial memory trial = trials[_trialId];
         return (trial.trialId, trial.researcher, trial.studyTitle, trial.ipfsHash, trial.timestamp);

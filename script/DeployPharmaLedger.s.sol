@@ -17,7 +17,7 @@ contract DeployPharmaLedger is Script {
 
         // 4. Stop broadcasting
         vm.stopBroadcast();
-        
+
         // (Optional) Log the address so we know where it deployed
         // console.log("PharmaLedger deployed to:", address(ledger));
     }

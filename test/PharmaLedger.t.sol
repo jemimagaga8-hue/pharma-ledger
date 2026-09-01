@@ -6,7 +6,7 @@ import "../src/PharmaLedger.sol";
 
 contract PharmaLedgerTest is Test {
     PharmaLedger public ledger;
-    
+
     // Setting up 3 fake wallets for testing
     address public admin = address(1);
     address public researcher = address(2);
@@ -32,8 +32,8 @@ contract PharmaLedgerTest is Test {
         vm.prank(researcher);
         ledger.uploadTrialData("Phase 1 Trial", "QmHash123");
 
-        (uint256 id, address res, string memory title, string memory hash, ) = ledger.getTrialData(1);
-        
+        (uint256 id, address res, string memory title, string memory hash,) = ledger.getTrialData(1);
+
         assertEq(id, 1);
         assertEq(res, researcher);
         assertEq(title, "Phase 1 Trial");
@@ -42,12 +42,12 @@ contract PharmaLedgerTest is Test {
 
     // TEST 3: Does the contract block unauthorized users? (UPDATED!)
     function test_RevertWhen_UnauthorizedUpload() public {
-        vm.prank(unauthorizedUser); 
-        
+        vm.prank(unauthorizedUser);
+
         // We explicitly tell Foundry: "Hey, the VERY NEXT line should crash/revert!"
-        vm.expectRevert("Not an authorized researcher"); 
-        
+        vm.expectRevert("Not an authorized researcher");
+
         // This will fail, which means our security works and we pass the test!
-        ledger.uploadTrialData("Fake Trial", "QmFakeHash"); 
+        ledger.uploadTrialData("Fake Trial", "QmFakeHash");
     }
 }
