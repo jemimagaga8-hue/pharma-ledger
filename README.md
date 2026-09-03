@@ -1,5 +1,5 @@
 # 🧬 Pharma-Ledger: DeSci Clinical Trial Vault
-
+![Pharma-Ledger Dashboard](./dashboard.jpg)
 A decentralized science (DeSci) smart contract protocol built to guarantee the absolute integrity and immutability of clinical trial data. 
 
 In the medical research industry, data tampering and missing trial results are massive liabilities. Pharma-Ledger solves this by allowing authorized researchers to anchor immutable IPFS hashes of their clinical trial results directly to the blockchain, creating a transparent and tamper-proof public ledger.
